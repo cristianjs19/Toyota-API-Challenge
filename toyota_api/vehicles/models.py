@@ -12,6 +12,9 @@ class Characteristic(models.Model):
     description = models.TextField(null=True, blank=True)
     image = models.ImageField(upload_to='images/', null=False, blank=True)
 
+    def __str__(self):
+        return self.title
+
 
 class Vehicle(models.Model):
     model_name = models.CharField(max_length=100, blank=False, default='')
@@ -22,5 +25,8 @@ class Vehicle(models.Model):
     price = models.IntegerField(blank=False, default=0)
     image = models.ImageField(upload_to='images/', null=False, blank=True)
     active = models.BooleanField(default=True)
-    characteristics =  models.ForeignKey(Characteristic, null=True, blank=True, on_delete=models.SET_NULL)
+    characteristics =  models.ManyToManyField(Characteristic, null=True, blank=True)
+
+    def __str__(self):
+        return self.model_name
 

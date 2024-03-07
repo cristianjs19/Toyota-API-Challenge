@@ -39,7 +39,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    #Own apps
+    # Third party
+    'drf_yasg',
+    
+    # Own apps
     'vehicles'
 ]
 
